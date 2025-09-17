@@ -1,0 +1,49 @@
+Build me a modern personal portfolio website using Next.js (latest version) and TypeScript. 
+Use Tailwind CSS for styling with a clean, minimal, and responsive UI. 
+Structure the portfolio with the following sections:
+
+1. **Hero Section**  
+   - My name: Muhammad Muaz Ahmed  
+   - Title: "Full Stack Developer | Cybersecurity Enthusiast"  
+   - A short tagline: "Building modern web apps and exploring secure digital systems."  
+   - Buttons for "Download Resume" and "Contact Me".
+
+2. **About Me Section**  
+   - A short bio about being a BS Software Engineering student (6th semester), passionate about full-stack web development and cybersecurity.  
+   - Mention expertise in MERN, Next.js, TypeScript, Tailwind, and React.  
+
+3. **Projects Section**  
+   - Showcase projects with cards including:  
+     - Netflix Pakistan Clone (React + CSS)  
+     - Spotify Clone (functional, client-based)  
+     - Weather App (OpenWeatherMap API)  
+     - Todo App (React.js)  
+     - E-commerce Web App (JSP + Servlet, CRUD)  
+     - Art Marketplace (MERN, modern UI)  
+   - Each card should include: title, description, tech stack badges, and a "View Project" button.
+
+4. **Skills Section**  
+   - Show skills with modern icons for:  
+     - Languages: TypeScript, JavaScript, C++, Java  
+     - Frameworks: React, Next.js, Node.js, Express.js, Spring Boot  
+     - Databases: MongoDB, MySQL  
+     - Tools: Git, Docker, Linux, Firebase  
+     - Cybersecurity: Ethical Hacking, Nmap basics  
+
+5. **Experience Section**  
+   - Junior Shop Keeper – ProductStorehouse (2020–2022)  
+   - Junior Warehouse Assistant – Awan Industries (2022–2024)  
+   - Mention teamwork, organization, and responsibility.
+
+6. **Contact Section**  
+   - Simple contact form (name, email, message).  
+   - Social links: GitHub, LinkedIn, Email.
+
+7. **Footer**  
+   - Copyright © 2025 Muhammad Muaz Ahmed  
+
+Additional requirements:  
+- Responsive layout for mobile, tablet, and desktop.  
+- Smooth animations using Framer Motion.  
+- Clean code with TypeScript types.  
+- SEO friendly (Next.js best practices).  
