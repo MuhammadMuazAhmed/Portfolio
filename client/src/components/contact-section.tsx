@@ -11,20 +11,20 @@ const socialLinks = [
   {
     name: "Email",
     icon: Mail,
-    href: "mailto:muaz@example.com",
-    label: "muaz@example.com"
+    href: "mailto:muazahmed.dev@gmail.com",
+    label: "muazahmed.dev@gmail.com"
   },
   {
     name: "GitHub",
     icon: Github,
-    href: "https://github.com/muaz-ahmed",
-    label: "github.com/muaz-ahmed"
+    href: "https://github.com/muhammad-muaz-ahmed",
+    label: "github.com/muhammad-muaz-ahmed"
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com/in/muaz-ahmed",
-    label: "linkedin.com/in/muaz-ahmed"
+    href: "https://linkedin.com/in/muhammad-muaz-ahmed",
+    label: "linkedin.com/in/muhammad-muaz-ahmed"
   }
 ];
 
@@ -48,23 +48,45 @@ export default function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // TODO: Implement actual form submission
-    console.log("Form submitted:", formData);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-      setFormData({ name: "", email: "", message: "" });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast({
+          title: "Error",
+          description: result.message || "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please check your connection and try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const handleSocialClick = (socialName: string, href: string) => {
     console.log(`${socialName} clicked: ${href}`);
-    // TODO: Open social link
+    window.open(href, "_blank", "noopener,noreferrer");
   };
 
   return (

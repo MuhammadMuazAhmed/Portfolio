@@ -4,7 +4,7 @@ import { Download, Mail } from "lucide-react";
 export default function HeroSection() {
   const handleDownloadResume = () => {
     console.log("Download Resume clicked");
-    // TODO: Implement resume download functionality
+    window.open("/api/resume", "_blank");
   };
 
   const handleContactMe = () => {
