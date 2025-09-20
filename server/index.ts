@@ -1,6 +1,20 @@
 import express, { type Request, Response, NextFunction } from "express";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+
+// Load environment variables from possible locations
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Prefer server/.env.local if present
+dotenv.config({ path: path.join(__dirname, ".env.local") });
+// Also try project-root .env.local (when running bundled from dist)
+dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
+// Fallback to default .env resolution
+dotenv.config();
 
 const app = express();
 app.use(express.json());
@@ -60,12 +74,8 @@ app.use((req, res, next) => {
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
+  const port = parseInt(process.env.PORT || "5000", 10);
+  server.listen(port, "0.0.0.0", () => {
+    log(`Serving on http://localhost:${port}`);
   });
 })();

@@ -10,7 +10,7 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a passionate BS Software Engineering student currently in my 6th semester, 
+              I'm a passionate BS Software Engineering student currently in my 7th semester, 
               dedicated to building innovative web applications and exploring the fascinating 
               world of cybersecurity.
             </p>
@@ -34,7 +34,7 @@ export default function AboutSection() {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Semester:</span>
-                <span>6th Semester</span>
+                <span>7th Semester</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Focus:</span>

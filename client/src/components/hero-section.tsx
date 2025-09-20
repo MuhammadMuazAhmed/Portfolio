@@ -1,21 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Download, Mail } from "lucide-react";
+import { BackgroundLines } from "../../../components/ui/background-lines";
 
 export default function HeroSection() {
   const handleDownloadResume = () => {
-    console.log("Download Resume clicked");
     window.open("/api/resume", "_blank");
   };
 
   const handleContactMe = () => {
-    console.log("Contact Me clicked");
-    // TODO: Implement scroll to contact section
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-chart-2/10 px-4">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
+    <BackgroundLines className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-chart-2/10 px-4 relative">
+      <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
         <div className="space-y-4">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
             Muhammad Muaz Ahmed
@@ -27,10 +25,10 @@ export default function HeroSection() {
             Building modern web apps and exploring secure digital systems.
           </p>
         </div>
-        
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             onClick={handleDownloadResume}
             className="gap-2 min-w-[180px]"
             data-testid="button-download-resume"
@@ -38,9 +36,9 @@ export default function HeroSection() {
             <Download className="w-4 h-4" />
             Download Resume
           </Button>
-          <Button 
-            variant="outline" 
-            size="lg" 
+          <Button
+            variant="outline"
+            size="lg"
             onClick={handleContactMe}
             className="gap-2 min-w-[180px] backdrop-blur-sm"
             data-testid="button-contact-me"
@@ -50,6 +48,6 @@ export default function HeroSection() {
           </Button>
         </div>
       </div>
-    </section>
+    </BackgroundLines>
   );
 }
