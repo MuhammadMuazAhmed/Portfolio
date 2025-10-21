@@ -26,6 +26,10 @@ export default defineConfig({
         manualChunks: undefined,
       },
     },
+    // Add sourcemap for better debugging
+    sourcemap: false,
+    // Ensure proper asset handling
+    assetsInlineLimit: 0,
   },
   server: {
     fs: {

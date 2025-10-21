@@ -5,11 +5,11 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "check": "tsc --project ./tsconfig.json",
-    "vercel-build": "vite build"
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "preview": "npx vite preview",
+    "check": "npx tsc --project ./tsconfig.json",
+    "vercel-build": "npx vite build"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",
