@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "tsc --project ./tsconfig.json"
+    "check": "tsc --project ./tsconfig.json",
+    "vercel-build": "vite build"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",
