@@ -1,6 +1,7 @@
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import AboutSection from "@/components/about-section";
+import HobbiesSection from "@/components/hobbies-section";
 import SkillsSection from "@/components/skills-section";
 import CertificationsSection from "@/components/certifications-section";
 import ProjectsSection from "@/components/projects-section";
@@ -15,6 +16,7 @@ export default function Portfolio() {
       <main>
         <HeroSection />
         <AboutSection />
+        <HobbiesSection />
         <SkillsSection />
         <CertificationsSection />
         <ProjectsSection />
