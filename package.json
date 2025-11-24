@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "npx vite build",
+    "build": "npm exec vite build",
     "preview": "vite preview",
     "check": "npx tsc --project ./tsconfig.json",
     "vercel-build": "vite build"
