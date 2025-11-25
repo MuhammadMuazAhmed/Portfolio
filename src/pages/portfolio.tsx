@@ -16,11 +16,11 @@ export default function Portfolio() {
       <main>
         <HeroSection />
         <AboutSection />
-        <HobbiesSection />
         <SkillsSection />
         <CertificationsSection />
         <ProjectsSection />
         <ExperienceSection />
+        <HobbiesSection />
         <ContactSection />
       </main>
       <Footer />
