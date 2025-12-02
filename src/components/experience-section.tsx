@@ -18,7 +18,7 @@ const experiences = [
   },
   {
     title: "ETL Ambassador",
-    company: "ETL (Earning Through Learning)",
+    company: "ETL (Empowerment Through Learning)",
     duration: "November 2024 - Present",
     description:
       "Serving as a technology ambassador promoting emerging technologies and innovation. Representing ETL in various tech events, workshops, and community outreach programs to foster technological advancement and knowledge sharing.",
