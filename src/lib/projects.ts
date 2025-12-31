@@ -8,6 +8,46 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "True Feedback",
+    description:
+      "A simple and secure platform where users can create a unique shareable link and receive anonymous feedback messages.",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "Lucide React"],
+    demoUrl: "https://true-feedback-mauve.vercel.app/",
+    githubUrl: "https://github.com/MuhammadMuazAhmed/True_feedback",
+  },
+  {
+    title: "Art Marketplace",
+    description:
+      "Modern marketplace for digital art with user profiles, artwork uploads, secure payments, and responsive design using MERN stack.",
+    techStack: ["JavaScript", "React", "Node.js", "MongoDB"],
+    demoUrl: "https://art-market-beta.vercel.app/",
+    githubUrl: "https://github.com/MuhammadMuazAhmed/ArtMarket",
+  },
+  {
+    title: "Personal Profile",
+    description:
+      "My personal GitHub profile repository showcasing my projects, skills, and professional journey in software development.",
+    techStack: ["Markdown", "GitHub", "Documentation"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/MuhammadMuazAhmed/MuhammadMuazAhmed",
+  },
+  {
+    title: "Perfect Academia",
+    description:
+      "A centralized learning platform providing structured roadmaps and curated resources across various academic and professional domains.",
+    techStack: ["React", "Tailwind CSS", "Lucide React"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/MuhammadMuazAhmed/Perfect_Academia",
+  },
+  {
+    title: "AI Map",
+    description:
+      "An experimental conversational map MVP focused on natural-language interaction with map data.",
+    techStack: ["Next.js", "OpenStreetMap", "Leaflet", "Tailwind CSS"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/MuhammadMuazAhmed/Ai_Map",
+  },
+  {
     title: "Netflix Pakistan Clone",
     description:
       "A responsive clone of Netflix with modern UI/UX, featuring movie browsing, search functionality, and dynamic content loading.",
@@ -46,14 +86,6 @@ export const projects: Project[] = [
     techStack: ["Java", "JSP", "Servlet", "MySQL", "JDBC"],
     demoUrl: "#",
     githubUrl: "https://github.com/MuhammadMuazAhmed/EcommerceCRUD",
-  },
-  {
-    title: "Art Marketplace",
-    description:
-      "Modern marketplace for digital art with user profiles, artwork uploads, secure payments, and responsive design using MERN stack.",
-    techStack: ["JavaScript", "React", "Node.js", "MongoDB"],
-    demoUrl: "https://art-market-beta.vercel.app/",
-    githubUrl: "https://github.com/MuhammadMuazAhmed/ArtMarket",
   },
   {
     title: "Art Marketplace Backend",
@@ -176,19 +208,27 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/MuhammadMuazAhmed/MCQs-Project",
   },
   {
-    title: "Personal Profile",
-    description:
-      "My personal GitHub profile repository showcasing my projects, skills, and professional journey in software development.",
-    techStack: ["Markdown", "GitHub", "Documentation"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/MuhammadMuazAhmed/MuhammadMuazAhmed",
-  },
-  {
     title: "Weather App",
     description:
       "A weather app that displays the current weather conditions for a given location using the OpenWeatherMap API.",
-    techStack: ["JavaScript", "HTML", "CSS","OpenWeatherMap API"],
+    techStack: ["JavaScript", "HTML", "CSS", "OpenWeatherMap API"],
     demoUrl: "https://weather-six-gold.vercel.app/",
     githubUrl: "https://github.com/MuhammadMuazAhmed/Weather",
+  },
+  {
+    title: "Cohort",
+    description:
+      "An intelligent team builder that automates role definition, member allocation, and team generation.",
+    techStack: ["React", "Vite", "Tailwind CSS", "Lucide React"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/MuhammadMuazAhmed/Cohort",
+  },
+  {
+    title: "Battle of ETL Brains",
+    description:
+      "An open-source quiz game designed for practicing and testing technical knowledge in a fun, interactive way.",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/MuhammadMuazAhmed/Battle-of-ETL-Brains",
   },
 ];
