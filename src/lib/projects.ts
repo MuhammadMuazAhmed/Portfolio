@@ -24,6 +24,14 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/MuhammadMuazAhmed/ArtMarket",
   },
   {
+    title: "Hospital Management System",
+    description:
+      "A comprehensive healthcare management platform for streamlining patient records, appointment scheduling, and administrative workflows.",
+    techStack: ["Next.js", "React", "Tailwind CSS", "Material UI", "Styled Components"],
+    demoUrl: "https://hospital-system-gon9.vercel.app/",
+    githubUrl: "https://github.com/MuhammadMuazAhmed/hospital_system",
+  },
+  {
     title: "Personal Profile",
     description:
       "My personal GitHub profile repository showcasing my projects, skills, and professional journey in software development.",
@@ -231,4 +239,5 @@ export const projects: Project[] = [
     demoUrl: "#",
     githubUrl: "https://github.com/MuhammadMuazAhmed/Battle-of-ETL-Brains",
   },
+
 ];
