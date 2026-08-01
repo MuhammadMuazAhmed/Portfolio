@@ -1,10 +1,10 @@
 import profilePic from "@/assets/profile.png";
 
 const quickFacts = [
-  { label: "Education", value: "BS Software Engineering (7th Sem)" },
+  { label: "Education", value: "BS Software Engineering" },
   { label: "Focus", value: "MERN & Native Android" },
   { label: "Certification", value: "CEH (Ethical Hacker)" },
-  { label: "Location", value: "Rawalpindi, PK" },
+  { label: "Location", value: "Islamabad, PK" },
 ];
 
 export default function AboutSection() {
@@ -41,7 +41,7 @@ export default function AboutSection() {
                   FULL-STACK BUILDER & RED TEAMER
                 </p>
                 <p className="text-xs text-muted-foreground font-mono">
-                  Rawalpindi, Pakistan · IST / GMT+5
+                  Islamabad, Pakistan · PKT / GMT+5
                 </p>
               </div>
             </div>

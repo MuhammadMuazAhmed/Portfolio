@@ -3,7 +3,7 @@ const experiences = [
     id: "EXP-01",
     role: "Independent Product Developer & Security Researcher",
     company: "Solo Build Studio",
-    location: "Rawalpindi, PK",
+    location: "Islamabad, PK",
     duration: "2024 — PRESENT",
     description:
       "Architecture, end-to-end engineering, and vulnerability stress-testing of full-stack web platforms and native Android applications. Shipped EasyRide (mobile app, backend & admin dashboard), Virtual Medical Coder (clinical NLP pipeline), and Android network scanner tooling.",
