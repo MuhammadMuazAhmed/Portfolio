@@ -67,7 +67,7 @@ export default function HeroSection() {
   return (
     <section className="min-h-[90vh] flex flex-col justify-center px-6 pb-16 md:pb-24 max-w-5xl mx-auto border-b border-border">
       {/* STATUS STRIP */}
-      <div className="mb-6 font-mono text-xs text-muted-foreground border-y border-border py-2 px-4 bg-muted/20 flex flex-wrap items-center justify-between gap-y-2 tracking-wider">
+      <div className="mb-6 font-mono text-xs text-muted-foreground border-y border-border py-1 px-4 bg-muted/20 flex flex-wrap items-center justify-between gap-y-2 tracking-wider">
         <div className="flex items-center gap-2">
           <span className="text-primary font-bold">PROJECTS SHIPPED: {shippedCount}</span>
           <span className="opacity-40">·</span>
