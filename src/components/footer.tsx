@@ -1,23 +1,35 @@
-import { Heart } from "lucide-react";
-
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/20 py-8 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center space-y-4">
-          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-            <span>Built with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-current" />
-            <span>using React, TypeScript & Tailwind CSS</span>
-          </div>
-          
-          <div className="text-sm text-muted-foreground">
-            Copyright © 2025 Muhammad Muaz Ahmed. All rights reserved.
-          </div>
-          
-          <div className="text-xs text-muted-foreground">
-            Passionate about creating innovative solutions and secure digital experiences.
-          </div>
+    <footer className="py-8 px-6 border-t border-border bg-background text-center font-mono text-xs text-muted-foreground">
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          © 2026 Muhammad Muaz Ahmed <span className="opacity-40">·</span> Built solo
+        </div>
+        <div className="flex items-center gap-4 text-xs">
+          <a
+            href="https://github.com/muhammadmuazahmed"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary transition-colors"
+          >
+            GitHub
+          </a>
+          <span className="opacity-40">·</span>
+          <a
+            href="https://www.linkedin.com/in/muhammad-muaz-ahmed/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary transition-colors"
+          >
+            LinkedIn
+          </a>
+          <span className="opacity-40">·</span>
+          <a
+            href="mailto:muhammadmuazahmed@gmail.com"
+            className="hover:text-primary transition-colors"
+          >
+            Email
+          </a>
         </div>
       </div>
     </footer>

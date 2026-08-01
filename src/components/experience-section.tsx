@@ -1,110 +1,127 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Building2, Calendar } from "lucide-react";
-
 const experiences = [
   {
-    title: "Cyber Security and App Development Intern",
-    company: "Nicat with startup company Le-Obran",
-    duration: "June 2025 - Aug 2025",
+    id: "EXP-01",
+    role: "Independent Product Developer & Security Researcher",
+    company: "Solo Build Studio",
+    location: "Rawalpindi, PK",
+    duration: "2024 — PRESENT",
     description:
-      "Gained hands-on experience in cybersecurity practices and mobile application development. Worked on security assessments, vulnerability testing, and contributed to app development projects in a fast-paced startup environment.",
-    skills: [
-      "Cyber Security",
-      "Mobile App Development",
-      "Vulnerability Assessment",
-      "Startup Environment",
+      "Architecture, end-to-end engineering, and vulnerability stress-testing of full-stack web platforms and native Android applications. Shipped EasyRide (mobile app, backend & admin dashboard), Virtual Medical Coder (clinical NLP pipeline), and Android network scanner tooling.",
+    highlights: [
+      "Designed and deployed MERN + React Native ride-hailing architecture solo",
+      "Executed red team pentests on personal software builds before public release",
+      "Built custom network scanner tools in Kotlin & Android SDK",
     ],
+    tech: ["Next.js", "React Native", "MongoDB", "Kotlin", "Python", "CEH Pentesting"],
   },
   {
-    title: "ETL Ambassador",
-    company: "ETL (Empowerment Through Learning)",
-    duration: "November 2024 - Present",
+    id: "EXP-02",
+    role: "Cyber Security & App Development Intern",
+    company: "Nicat with startup company Le-Obran",
+    location: "Rawalpindi, PK",
+    duration: "JUN 2025 — AUG 2025",
     description:
-      "Serving as a technology ambassador promoting emerging technologies and innovation. Representing ETL in various tech events, workshops, and community outreach programs to foster technological advancement and knowledge sharing.",
-    skills: [
-      "Technology Advocacy",
-      "Community Outreach",
-      "Event Management",
-      "Public Speaking",
+      "Gained hands-on experience in cybersecurity practices and mobile application development. Performed security assessments, vulnerability testing, and contributed to core app development projects in a fast-paced startup environment.",
+    highlights: [
+      "Conducted web and mobile security vulnerability assessments",
+      "Contributed to frontend and API integrations for client-facing apps",
+      "Collaborated in fast-iterating startup engineering environment",
     ],
+    tech: ["Vulnerability Assessment", "Mobile Dev", "Security Testing", "React"],
+  },
+  {
+    id: "EXP-03",
+    role: "ETL Technology Ambassador",
+    company: "Empowerment Through Learning (ETL)",
+    location: "Pakistan",
+    duration: "NOV 2024 — PRESENT",
+    description:
+      "Serving as technology ambassador promoting emerging technologies, open-source innovation, and cybersecurity awareness. Representing ETL in technical workshops, student mentorship, and community outreach programs.",
+    highlights: [
+      "Organized technical workshops on modern web & mobile stacks",
+      "Advocated for cybersecurity best practices among engineering students",
+      "Facilitated open-source collaboration initiatives",
+    ],
+    tech: ["Tech Advocacy", "Public Speaking", "Community Outreach", "Mentorship"],
   },
 ];
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 px-4 bg-muted/30">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Work Experience
+    <section id="experience" className="py-20 px-6 max-w-5xl mx-auto border-b border-border">
+      <div className="space-y-12">
+        {/* SECTION HEADER */}
+        <div>
+          <div className="font-mono text-xs text-primary tracking-widest uppercase mb-1">
+            05 // EXPERIENCE
+          </div>
+          <h2 className="text-3xl font-bold font-display text-foreground tracking-tight">
+            Work Timeline
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto"></div>
-          <p className="text-lg text-muted-foreground mt-4">
-            Building responsibility, teamwork, and organizational skills through
-            diverse work experiences.
+          <p className="text-sm font-mono text-muted-foreground mt-1">
+            CHRONOLOGICAL RESPONSIBILITY, SOLO BUILDS & INDUSTRY ROLES
           </p>
         </div>
 
-        <div className="space-y-8">
-          {experiences.map((experience, index) => (
-            <Card
-              key={index}
-              className="hover-elevate"
-              data-testid={`card-experience-${index}`}
+        {/* VERTICAL TIMELINE */}
+        <div className="relative pl-6 md:pl-0 space-y-8 before:absolute before:left-2 md:before:left-[170px] before:top-3 before:bottom-3 before:w-px before:bg-signal/40">
+          {experiences.map((exp) => (
+            <div
+              key={exp.id}
+              className="relative grid md:grid-cols-12 gap-4 items-start group"
+              data-testid={`timeline-exp-${exp.id.toLowerCase()}`}
             >
-              <CardHeader>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              {/* TIMELINE NODE DOT */}
+              <div className="absolute -left-[20px] md:left-[165px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal border-2 border-background z-10 group-hover:scale-125 transition-transform" />
+
+              {/* DATE COLUMN (LEFT) */}
+              <div className="md:col-span-3 font-mono text-xs font-bold text-primary tracking-wider pt-0.5">
+                {exp.duration}
+              </div>
+
+              {/* CONTENT COLUMN (RIGHT) */}
+              <div className="md:col-span-9 border border-border bg-card p-6 space-y-4 hover:border-primary transition-colors">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-border pb-3">
                   <div>
-                    <CardTitle className="text-xl flex items-center gap-2">
-                      <Building2 className="w-5 h-5 text-primary" />
-                      {experience.title}
-                    </CardTitle>
-                    <p className="text-lg text-muted-foreground font-medium mt-1">
-                      {experience.company}
-                    </p>
+                    <h3 className="text-lg font-bold font-display text-foreground group-hover:text-primary transition-colors">
+                      {exp.role}
+                    </h3>
+                    <div className="text-xs font-mono text-signal mt-0.5">
+                      {exp.company} <span className="text-muted-foreground">· {exp.location}</span>
+                    </div>
                   </div>
-                  <Badge
-                    variant="outline"
-                    className="flex items-center gap-2 w-fit"
-                  >
-                    <Calendar className="w-3 h-3" />
-                    {experience.duration}
-                  </Badge>
+                  <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+                    [{exp.id}]
+                  </span>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
-                  {experience.description}
+
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {exp.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {experience.skills.map((skill, skillIndex) => (
-                    <Badge
-                      key={skillIndex}
-                      variant="secondary"
-                      className="text-xs"
-                      data-testid={`badge-experience-skill-${skill
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]/g, "-")}`}
+                {/* HIGHLIGHT BULLETS */}
+                <ul className="space-y-1.5 font-sans text-xs text-foreground list-disc list-inside">
+                  {exp.highlights.map((h, i) => (
+                    <li key={i} className="leading-normal">
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* TECH TAGS */}
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border/60">
+                  {exp.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-[10px] px-2 py-0.5 border border-border text-muted-foreground"
                     >
-                      {skill}
-                    </Badge>
+                      {t}
+                    </span>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-4 px-6 py-4 bg-card border border-card-border rounded-lg">
-            <div className="text-sm text-muted-foreground">
-              <strong>Key Achievements:</strong> Developed strong teamwork,
-              organizational skills, and responsibility through hands-on
-              experience in customer service and operations management.
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

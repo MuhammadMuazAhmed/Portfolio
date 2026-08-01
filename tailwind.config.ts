@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
+import typography from "@tailwindcss/typography";
 
 export default {
   darkMode: ["class"],
@@ -18,6 +20,13 @@ export default {
         sm: ".1875rem",
       },
       colors: {
+        ink: "#0E1116",
+        paper: "#F4F5F3",
+        slate: "#232833",
+        signal: "#4FD1C5",
+        alert: "#F5A623",
+        ok: "#7FE0A7",
+        "ink-muted": "#8A93A3",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -76,11 +85,12 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Poppins", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        display: ["Space Grotesk", "sans-serif"],
+        sans: ["Inter", "IBM Plex Sans", "sans-serif"],
+        heading: ["Space Grotesk", "sans-serif"],
+        mono: ["IBM Plex Mono", "JetBrains Mono", "monospace"],
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [tailwindcssAnimate, typography],
 } satisfies Config;

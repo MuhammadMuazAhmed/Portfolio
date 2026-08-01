@@ -1,138 +1,244 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { CometCard } from "@/components/ui/comet-card2";
-import { ExternalLink, Github } from "lucide-react";
-import { projects } from "@/lib/projects";
+import { ExternalLink, Github, ChevronDown, ChevronUp } from "lucide-react";
+import { projects, Project } from "@/lib/projects";
 import { Link } from "wouter";
 
-// Projects now come from shared data file
-
 export default function ProjectsSection() {
-  const handleViewProject = (projectTitle: string, url: string) => {
-    if (!url || url === "#") {
-      return;
-    }
-    try {
-      const targetUrl = url.startsWith("http") ? url : `https://${url}`;
-      window.open(targetUrl, "_blank", "noopener,noreferrer");
-    } catch (e) {
-      // Silently handle error
-    }
-  };
+  const [isArchiveOpen, setIsArchiveOpen] = useState(false);
 
-  const handleViewGithub = (projectTitle: string, url: string) => {
-    if (!url || url === "#") {
-      return;
-    }
-    try {
-      const targetUrl = url.startsWith("http") ? url : `https://${url}`;
-      window.open(targetUrl, "_blank", "noopener,noreferrer");
-    } catch (e) {
-      // Silently handle error
-    }
+  const featuredProjects = projects.filter((p) => p.featured);
+  const archiveProjects = projects.filter((p) => !p.featured);
+
+  const handleOpenLink = (url: string) => {
+    if (!url || url === "#") return;
+    const targetUrl = url.startsWith("http") ? url : `https://${url}`;
+    window.open(targetUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <section id="projects" className="py-24 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Featured Projects
+    <section id="projects" className="py-20 px-6 max-w-5xl mx-auto border-b border-border">
+      <div className="space-y-12">
+        {/* SECTION HEADER */}
+        <div>
+          <div className="font-mono text-xs text-primary tracking-widest uppercase mb-1">
+            02 // WORK
+          </div>
+          <h2 className="text-3xl font-bold font-display text-foreground tracking-tight">
+            Featured Modules
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto"></div>
-          <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
-            A showcase of my recent work spanning web development, API
-            integration, and full-stack applications.
+          <p className="text-sm font-mono text-muted-foreground mt-1">
+            VERIFIED SYSTEMS · SHIPPED & ACTIVE BUILDS
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.slice(0, 6).map((project, index) => (
-            <CometCard
-              key={index}
-              className="group"
-              data-testid={`card-project-${index}`}
-            >
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.map((tech, techIndex) => (
-                      <Badge
-                        key={techIndex}
-                        variant="outline"
-                        className="text-xs"
-                        data-testid={`badge-tech-${tech
-                          .toLowerCase()
-                          .replace(/[^a-z0-9]/g, "-")}`}
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
+        {/* FEATURED MODULE CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuredProjects.map((project: Project) => {
+            const isShipped = project.status === "shipped";
+            return (
+              <div
+                key={project.id || project.title}
+                className="border border-border bg-card p-6 flex flex-col justify-between hover:border-primary transition-colors group"
+                data-testid={`card-module-${project.id?.toLowerCase() || project.title.toLowerCase()}`}
+              >
+                <div className="space-y-4">
+                  {/* CARD HEADER */}
+                  <div className="flex items-center justify-between font-mono text-xs border-b border-border pb-3">
+                    <span className="text-primary font-bold tracking-wider">
+                      [{project.id || "MODULE"}]
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-1.5 font-semibold text-[11px] ${
+                        isShipped ? "text-ok" : "text-alert"
+                      }`}
+                    >
+                      <span
+                        className={`w-2 h-2 rounded-full ${
+                          isShipped ? "bg-ok animate-status-pulse" : "bg-alert"
+                        }`}
+                      />
+                      {isShipped ? "● SHIPPED" : "◐ IN PROGRESS"}
+                    </span>
                   </div>
 
-                  <div className="flex gap-2 pt-2">
-                    {project.demoUrl && project.demoUrl !== "#" ? (
-                      <Button
-                        size="sm"
-                        className="flex-1 gap-2"
-                        onClick={() =>
-                          handleViewProject(project.title, project.demoUrl)
-                        }
-                        data-testid={`button-view-project-${index}`}
-                      >
-                        <ExternalLink className="w-3 h-3" />
-                        View Project
-                      </Button>
-                    ) : (
-                      <div className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm text-muted-foreground bg-muted/50 rounded-md border border-dashed">
-                        <ExternalLink className="w-3 h-3" />
-                        Demo isn't available for this project
+                  {/* TITLE & DESCRIPTION */}
+                  <div>
+                    <h3 className="text-xl font-bold font-display text-foreground group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* FIELD REPORT SCOPE, STACK, ROLE */}
+                  <div className="space-y-2 font-mono text-xs pt-2">
+                    {project.scope && (
+                      <div className="grid grid-cols-12 gap-2 text-muted-foreground">
+                        <span className="col-span-3 text-primary uppercase text-[10px] tracking-wider">
+                          SCOPE
+                        </span>
+                        <span className="col-span-9 text-foreground font-sans text-xs">
+                          {project.scope}
+                        </span>
                       </div>
                     )}
+
+                    <div className="grid grid-cols-12 gap-2 text-muted-foreground">
+                      <span className="col-span-3 text-primary uppercase text-[10px] tracking-wider">
+                        STACK
+                      </span>
+                      <span className="col-span-9 text-xs text-muted-foreground font-mono">
+                        {project.techStack.join(" · ")}
+                      </span>
+                    </div>
+
+                    {project.role && (
+                      <div className="grid grid-cols-12 gap-2 text-muted-foreground">
+                        <span className="col-span-3 text-primary uppercase text-[10px] tracking-wider">
+                          ROLE
+                        </span>
+                        <span className="col-span-9 text-xs text-foreground">
+                          {project.role}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* CARD ACTIONS */}
+                <div className="flex items-center gap-3 pt-6 mt-4 border-t border-border font-mono text-xs">
+                  {project.demoUrl && project.demoUrl !== "#" ? (
+                    <Button
+                      size="sm"
+                      onClick={() => handleOpenLink(project.demoUrl)}
+                      className="gap-2 font-mono text-xs bg-primary text-primary-foreground hover:bg-primary/90 rounded-none flex-1"
+                      data-testid={`button-demo-${project.id?.toLowerCase()}`}
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Live Demo</span>
+                    </Button>
+                  ) : (
+                    <div className="flex-1 text-center py-1.5 text-[11px] font-mono text-muted-foreground bg-muted/30 border border-dashed border-border">
+                      DEMO DEPLOYING / PRIVATE
+                    </div>
+                  )}
+
+                  {project.githubUrl && project.githubUrl !== "#" && (
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() =>
-                        handleViewGithub(project.title, project.githubUrl)
-                      }
-                      data-testid={`button-view-github-${index}`}
+                      onClick={() => handleOpenLink(project.githubUrl)}
+                      className="gap-2 font-mono text-xs border-slate hover:border-primary rounded-none"
+                      data-testid={`button-github-${project.id?.toLowerCase()}`}
                     >
-                      <Github className="w-3 h-3" />
+                      <Github className="w-3.5 h-3.5" />
+                      <span>Source</span>
                     </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </CometCard>
-          ))}
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        <div className="mt-10 text-center">
-          <Link href="/projects">
+        {/* ALL PROJECTS DISCLOSURE (ARCHIVE TABLE) */}
+        <div className="pt-6 border-t border-border">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h3 className="text-lg font-bold font-display text-foreground">
+                All Projects Archive
+              </h3>
+              <p className="text-xs font-mono text-muted-foreground">
+                TOTAL BUILDS & UTILITIES ({projects.length} REPOSITORIES)
+              </p>
+            </div>
+
             <Button
-              size="lg"
-              className="gap-2 group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
-              data-testid="button-view-all-projects"
+              variant="outline"
+              onClick={() => setIsArchiveOpen(!isArchiveOpen)}
+              className="gap-2 font-mono text-xs border-slate hover:border-primary rounded-none"
+              data-testid="button-toggle-archive"
             >
-              <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
-                View All Projects
+              <span>
+                {isArchiveOpen ? "Collapse Archive" : `Show all ${projects.length} projects`}
               </span>
-              <ExternalLink className="w-4 h-4 relative z-10 transition-all duration-300 group-hover:translate-x-1 group-hover:rotate-12" />
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out"></div>
+              {isArchiveOpen ? (
+                <ChevronUp className="w-4 h-4 text-primary" />
+              ) : (
+                <ChevronDown className="w-4 h-4 text-primary" />
+              )}
             </Button>
-          </Link>
+          </div>
+
+          {/* DENSE ARCHIVE TABLE */}
+          {isArchiveOpen && (
+            <div className="mt-6 border border-border bg-card overflow-x-auto">
+              <table className="w-full text-left font-mono text-xs">
+                <thead className="bg-muted/40 border-b border-border text-[11px] text-primary uppercase tracking-wider">
+                  <tr>
+                    <th className="py-2.5 px-4 font-bold">ID</th>
+                    <th className="py-2.5 px-4 font-bold">TITLE</th>
+                    <th className="py-2.5 px-4 font-bold">STACK</th>
+                    <th className="py-2.5 px-4 font-bold">STATUS</th>
+                    <th className="py-2.5 px-4 font-bold text-right">LINK</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {projects.map((proj) => (
+                    <tr
+                      key={proj.id || proj.title}
+                      className="hover:bg-muted/30 transition-colors"
+                    >
+                      <td className="py-2.5 px-4 text-primary font-bold">
+                        {proj.id || "PROJ"}
+                      </td>
+                      <td className="py-2.5 px-4 font-sans font-medium text-foreground">
+                        {proj.title}
+                      </td>
+                      <td className="py-2.5 px-4 text-muted-foreground text-[11px]">
+                        {proj.techStack.slice(0, 3).join(", ")}
+                        {proj.techStack.length > 3 ? "..." : ""}
+                      </td>
+                      <td className="py-2.5 px-4 text-[11px]">
+                        <span
+                          className={
+                            proj.status === "shipped"
+                              ? "text-ok"
+                              : "text-alert"
+                          }
+                        >
+                          {proj.status === "shipped" ? "● SHIPPED" : "◐ IN PROGRESS"}
+                        </span>
+                      </td>
+                      <td className="py-2.5 px-4 text-right">
+                        {proj.githubUrl && proj.githubUrl !== "#" ? (
+                          <button
+                            onClick={() => handleOpenLink(proj.githubUrl)}
+                            className="text-signal hover:underline inline-flex items-center gap-1"
+                          >
+                            <span>Repo</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </button>
+                        ) : (
+                          <span className="text-muted-foreground">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          <div className="mt-4 text-right">
+            <Link href="/projects">
+              <span className="text-xs font-mono text-signal hover:underline cursor-pointer inline-flex items-center gap-1">
+                Open Full Dedicated Archive Page →
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

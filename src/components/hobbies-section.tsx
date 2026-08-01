@@ -1,7 +1,4 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BookOpen, Code } from "lucide-react";
-import { motion } from "framer-motion";
 import cricketIcon from "@/assets/cricket-icon.png";
 import badmintonIcon from "@/assets/badminton-icon.png";
 
@@ -13,80 +10,83 @@ const hobbies = [
     title: "Cricket",
     icon: CricketImage,
     description: "Teamwork & Strategy",
-    details: "Playing cricket teaches me the value of teamwork, strategic planning under pressure, and patience.",
-    tags: ["Teamwork", "Strategy", "Patience"],
+    details: "Teaches teamwork, strategic execution under pressure, and endurance.",
+    tags: ["Teamwork", "Strategy", "Focus"],
   },
   {
     title: "Badminton",
     icon: BadmintonImage,
-    description: "Agility & Focus",
-    details: "Badminton requires quick reflexes and sharp focus. It helps me maintain physical agility and mental alertness.",
-    tags: ["Agility", "Focus", "Reflexes"],
+    description: "Agility & Reflexes",
+    details: "Sharpens rapid decision making, physical agility, and mental alertness.",
+    tags: ["Agility", "Reflexes", "Alertness"],
   },
   {
     title: "Books",
     icon: BookOpen,
     description: "Continuous Learning",
-    details: "Reading expands my perspective and fuels my curiosity. It enhances my vocabulary and critical thinking abilities.",
-    tags: ["Learning", "Curiosity", "Perspective"],
+    details: "Expands mental models, fuels curiosity, and sharpens analytical thinking.",
+    tags: ["Analysis", "Curiosity", "Growth"],
   },
   {
     title: "Coding",
     icon: Code,
     description: "Problem Solving",
-    details: "Coding allows me to create, solve complex problems, and continuously build things that make a difference.",
-    tags: ["Problem Solving", "Logic", "Creativity"],
+    details: "Building tools, breaking down complex logic, and continuous creation.",
+    tags: ["Logic", "Architecture", "Craft"],
   },
 ];
 
 export default function HobbiesSection() {
   return (
-    <section id="hobbies" className="py-20 bg-muted/30">
-      <div className="container px-4 mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl font-bold tracking-tight mb-4 font-heading">Hobbies & Interests</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Beyond the code, I engage in activities that keep me balanced and sharpen my soft skills.
+    <section id="hobbies" className="py-20 px-6 max-w-5xl mx-auto border-b border-border">
+      <div className="space-y-12">
+        {/* SECTION HEADER */}
+        <div>
+          <div className="font-mono text-xs text-primary tracking-widest uppercase mb-1">
+            07 // INTERESTS
+          </div>
+          <h2 className="text-3xl font-bold font-display text-foreground tracking-tight">
+            Off-Duty Discipline
+          </h2>
+          <p className="text-sm font-mono text-muted-foreground mt-1">
+            STRATEGIC PURSUITS & CONTINUOUS GROWTH
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {hobbies.map((hobby, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {hobbies.map((hobby) => (
+            <div
+              key={hobby.title}
+              className="p-5 border border-border bg-card hover:border-primary transition-colors flex flex-col justify-between"
             >
-              <Card className="h-full hover:shadow-lg transition-shadow flex flex-col">
-                <CardHeader className="text-center pb-2 flex-grow">
-                  <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 overflow-hidden border border-primary/20 text-primary">
-                    <hobby.icon className={hobby.icon === BookOpen || hobby.icon === Code ? "w-8 h-8" : "w-full h-full object-cover"} />
+              <div className="space-y-3 text-center">
+                <div className="mx-auto w-12 h-12 rounded-full border border-border bg-muted/30 flex items-center justify-center overflow-hidden text-primary">
+                  <hobby.icon className={hobby.icon === BookOpen || hobby.icon === Code ? "w-6 h-6" : "w-full h-full object-cover"} />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold font-display text-foreground">
+                    {hobby.title}
+                  </h3>
+                  <div className="text-[11px] font-mono text-primary font-semibold mt-0.5">
+                    {hobby.description}
                   </div>
-                  <CardTitle className="text-xl font-heading mb-2">{hobby.title}</CardTitle>
-                  <p className="text-sm text-primary font-medium mb-2">{hobby.description}</p>
-                </CardHeader>
-                <CardContent className="text-center space-y-4">
-                  <CardDescription className="text-sm leading-relaxed">
-                    {hobby.details}
-                  </CardDescription>
-                  <div className="flex flex-wrap justify-center gap-2 pt-2">
-                    {hobby.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed font-sans">
+                  {hobby.details}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-1.5 pt-4 mt-4 border-t border-border font-mono">
+                {hobby.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] px-2 py-0.5 border border-border text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
