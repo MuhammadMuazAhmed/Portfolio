@@ -65,7 +65,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="min-h-[90vh] flex flex-col justify-center px-6 py-16 md:py-24 max-w-5xl mx-auto border-b border-border">
+    <section className="min-h-[90vh] flex flex-col justify-center px-6 pb-16 md:pb-24 max-w-5xl mx-auto border-b border-border">
       {/* STATUS STRIP */}
       <div className="mb-6 font-mono text-xs text-muted-foreground border-y border-border py-2.5 px-4 bg-muted/20 flex flex-wrap items-center justify-between gap-y-2 tracking-wider">
         <div className="flex items-center gap-2">
@@ -78,7 +78,7 @@ export default function HeroSection() {
         <div className="flex items-center gap-2">
           <span className="text-signal font-semibold">CEH CERTIFIED</span>
           <span className="opacity-40">·</span>
-          <span>RAWALPINDI, PK</span>
+          <span>ISLAMABAD, PK</span>
         </div>
       </div>
 
